@@ -46,14 +46,14 @@ class CreateQuizController extends Controller
             'bab_id' => 'required|exists:bab,id',
             'quiz_desc' => 'required|string|max:255',
         ]);
-
+    
         // Buat kuis baru
         Quiz::create([
             'bab_id' => $request->input('bab_id'),
             'quiz_desc' => $request->input('quiz_desc'),
-            'matkul_code' => Bab::find($request->input('bab_id'))->matkul_code, // Assuming Bab model has matkul_code attribute
+            'matkul_code' => Bab::find($request->input('bab_id'))->matkul_code,
         ]);
-
+    
         return redirect()->route('bab.index', $request->input('bab_id'))->with('success', 'Quiz created successfully.');
     }
 }

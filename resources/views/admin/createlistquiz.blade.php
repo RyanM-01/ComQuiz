@@ -46,7 +46,8 @@
         <ul class="logout-mode">
             <li>
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <i class="uil uil-sign-out-alt"></i><span class="link-name">Logout</span>
+                    <i class="uil uil-sign-out-alt"></i>
+                    <span class="link-name">Logout</span>
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
@@ -89,16 +90,16 @@
         </div>
         <div class="container">
             @foreach($quizzes->where('bab_id', $bab->id) as $quiz)
-        <div class="babbox">
-            <div class="bab">
-                 <button class="btn" type="submit" name="update"><i class="uil uil-edit"></i></button>
-                     <p>
-                         <input class="namabab" type="text" name="name" value="{{ $quiz->quiz_desc }}" required autocomplete="off" />
+            <div class="babbox">
+                <div class="bab">
+                    <button class="btn" type="button" name="update"><i class="uil uil-edit"></i></button>
+                    <p>
+                        <input class="namabab" type="text" name="name" value="{{ $quiz->quiz_desc }}" required autocomplete="off" />
                     </p>
-            </div>
-            <div>
-            <div>
-              <a href="#" class="takequiz-btn" data-matkul-code="{{ $matkul->code }}" data-bab-id="{{ $bab->id }}">Edit Quiz</a>
+                </div>
+                <div>
+                    <a href="#" class="takequiz-btn" data-matkul-code="{{ $matkul->code }}" data-bab-id="{{ $bab->id }}" data-quiz-id="{{ $quiz->id }}">Edit Quiz</a>
+                </div>
             </div>
             @endforeach
         </div>
@@ -111,10 +112,9 @@
             </div>
         </div>
     </div>
-    
 </section>
 <script>
-    document.querySelectorAll('.edit-quiz-btn').forEach(button => {
+    document.querySelectorAll('.takequiz-btn').forEach(button => {
         button.addEventListener('click', function (e) {
             e.preventDefault();
             const quizId = this.getAttribute('data-quiz-id');
@@ -133,3 +133,4 @@
 <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>
+

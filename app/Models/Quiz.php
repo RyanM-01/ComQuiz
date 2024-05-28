@@ -12,15 +12,8 @@ class Quiz extends Model
     use HasFactory;
     protected $fillable = [
         'quiz_desc',
+        'bab_id',
+        'matkul_code',
     ];
     
-    
-    public function bab()
-    {
-        return $this->belongsTo(Bab::class);
-    }
-
-    public function Questions(){
-        return $this->hasMany(Questions::class);
-    }
 }
