@@ -114,20 +114,24 @@
     </div>
 </section>
 <script>
-    document.querySelectorAll('.takequiz-btn').forEach(button => {
-        button.addEventListener('click', function (e) {
-            e.preventDefault();
-            const quizId = this.getAttribute('data-quiz-id');
-            const continueBtn = document.getElementById('continue-btn');
-            continueBtn.href = `/admin/quiz/edit/${quizId}`;
+document.querySelectorAll('.takequiz-btn').forEach(button => {
+    button.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const matkulCode = this.getAttribute('data-matkul-code');
+        const babId = this.getAttribute('data-bab-id');
+        const quizId = this.getAttribute('data-quiz-id');
+        
+        const continueBtn = document.getElementById('continue-btn');
+        continueBtn.href = `/admin/bab/${matkulCode}/quiz/create/${babId}/${quizId}`;
 
-            document.querySelector('.popup-info').style.display = 'block';
-        });
+        document.querySelector('.popup-info').style.display = 'block';
     });
+});
 
-    document.querySelector('.exit-btn').addEventListener('click', function () {
-        document.querySelector('.popup-info').style.display = 'none';
-    });
+document.querySelector('.exit-btn').addEventListener('click', function () {
+    document.querySelector('.popup-info').style.display = 'none';
+});
 </script>
 
 <script src="{{ asset('js/script.js') }}"></script>

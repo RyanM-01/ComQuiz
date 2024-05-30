@@ -38,6 +38,34 @@ class CreateQuizController extends Controller
     }
     
     
+    public function edit($matkulCode, $bab_id, $quiz_id)
+    {
+        $user = Auth::user();
+
+        $matkuls = DB::table('matkul')->get();
+        $matkul = DB::table('matkul')->where('code', $matkulCode)->first();
+
+        $babs = DB::table('bab')->get();
+        $bab = DB::table('bab')->find($bab_id);
+
+        // Pastikan nama tabel yang benar
+        $quizzes = DB::table('quiz')->where('bab_id', $bab_id)->get();
+        $quiz = DB::table('quiz')->where('id', $quiz_id)->first();
+
+        if (!$matkul) {
+            return redirect()->route('admin.dashboard')->withErrors('Matkul tidak ditemukan');
+        }
+
+        if (!$bab) {
+            return redirect()->route('bab.index', ['matkulCode' => $matkul->code])->withErrors('Bab tidak ditemukan');
+        }
+
+        if (!$quiz) {
+            return redirect()->route('bab.index', ['matkulCode' => $matkul->code])->withErrors('Quiz tidak ditemukan');
+        }
+
+        return view('admin.createquiz', compact('user', 'matkuls', 'matkul', 'babs', 'bab', 'quizzes', 'quiz'));
+    }
 
     public function store(Request $request)
     {

@@ -84,6 +84,7 @@ Route::post('/admin/bab/{id}/update', [BabController::class, 'update'])->name('b
 
 
 Route::get('/admin/bab/{matkulCode}/quiz/create/{bab_id}', [CreateQuizController::class, 'create'])->name('quiz.create');
+Route::get('/admin/bab/{matkulCode}/quiz/create/{bab_id}/{quiz_id}', [CreateQuizController::class, 'edit'])->name('quiz.edit');
 
 Route::post('/quiz', [CreateQuizController::class, 'store'])->name('quiz.store');
 
