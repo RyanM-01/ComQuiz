@@ -13,7 +13,8 @@
   <body>
     <div class="content">
       <div class="btn-group-back">
-      <a href="{{ route('bab.index', ['matkulCode' => $matkul->code]) }}" class="back-btn">Exit Edit</a>
+      <a href="{{ route('quiz.create', ['matkulCode' => $matkul->code, 'bab_id' => $bab->id]) }}" class="back-btn">Exit Edit</a>
+
       </div>
 
       <div class="title">

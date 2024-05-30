@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('quiz_id'); // Reference to 'id' column of 'quiz' table
             $table->string('question_text'); // Column for the text of the question
-            $table->string('correct_answer'); // Column for the correct answer
             $table->timestamps();
 
             $table->foreign('quiz_id')->references('id')->on('quiz')->onDelete('cascade');
